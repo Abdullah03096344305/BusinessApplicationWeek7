@@ -15,9 +15,7 @@ namespace SignInWeek3.BL
         public Burger(int burgertotal)
         {
             this.burgertotal = burgertotal;
-
         }
-
         public Burger(string name, int price)
         {
             this.name = name;

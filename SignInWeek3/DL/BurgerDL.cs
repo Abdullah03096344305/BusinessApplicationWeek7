@@ -11,7 +11,7 @@ namespace SignInWeek3.DL
 {
     class BurgerDL
     {
-        public int burgertotal;
+       
         public static List<Burger> burgers = new List<Burger>();
         public static void ReadBurgerData(string path1, List<Burger> burgers)
         {
@@ -33,13 +33,13 @@ namespace SignInWeek3.DL
                                 burgers.Add(burger);
                             }
                             else
-                            {
-                                Console.WriteLine($"Invalid price in record: {record}");
+                            {                              
+                                Console.WriteLine(" Invalid price in record: " +  record);
                             }
                         }
                         else
-                        {
-                            Console.WriteLine($"Invalid record: {record}");
+                        {                         
+                            Console.WriteLine("Invalid record: " + record);
                         }
                     }
                 }
@@ -95,6 +95,7 @@ namespace SignInWeek3.DL
         }
         public static int CalculateBurgerPrice(List<Burger> burgers, Burger info)
         {
+           
             int burgerchoice;
             int burgerquantity;
             while (true)

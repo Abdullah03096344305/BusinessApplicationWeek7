@@ -14,16 +14,16 @@ namespace SignInWeek3
     {
         static void Main(string[] args)
         {
-          
-            string path = @"E:\Week3PDSubmit\SignInWeek3\textfile.txt";
-            Burger info = new Burger(0);
+            
+            string path = @"E:\Week3PDSubmit\SignInWeek3\textfile.txt";         
+            Burger info = new Burger(0);            
             string path1 = @"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt";
             string pathUser = @"E:\Week3PDSubmit\SignInWeek3\UserFile.txt";
 
             BurgerDL.ReadBurgerData(path1, BurgerDL.burgers);
             UserDataDL.ReadUserData(pathUser, UserDataDL.userdata);
-
-           
+                     
+            
             int option;
             int option1;
             int option2;
