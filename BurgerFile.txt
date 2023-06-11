@@ -1,3 +1,6 @@
-hola,123
-week3testingclass,3
-shola,223
+Veggie Burger,220
+Kashmiri Burger,170
+Zinger Burger,220
+Special Tikka,210
+Double Sheikh,450
+Shaami Burger,150

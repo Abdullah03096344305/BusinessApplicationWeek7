@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using SignInWeek3.BL;
+/*using SignInWeek3.DL;*/
 using System.Threading.Tasks;
 
 namespace SignInWeek3.UI
@@ -75,5 +78,68 @@ namespace SignInWeek3.UI
             Console.WriteLine();
             Console.WriteLine("Press any Key to Conitnue ...");
         }
+
+        public static void Bill(Burger info)
+        {
+            Console.Clear();
+            MenuUI.Header();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            int finalTotal = info.burgertotal;
+            if (finalTotal < 1)
+            {
+                Console.WriteLine("Please Purchase Something First!");
+            }
+            if (finalTotal > 1)
+            {
+                Console.WriteLine("Thanks For Ordering From Us! ");
+                Console.WriteLine();
+                Console.WriteLine("Your Total Bill Is  " + finalTotal);
+            }
+            Console.WriteLine("Press any Key to Conitnue ...");
+        }
+
+
+        public static void Delivery(Burger info)
+        {
+            int deliverytotal = info.burgertotal;
+            Console.Clear();
+            MenuUI.Header();
+            Console.WriteLine("              ***** DELIVERY CHARGES *****");
+            if (deliverytotal > 3000)
+            {
+                Console.WriteLine("                                 As Your Bill Amount Is Greater Than 3000 There is No Delivery Charges ");
+                Console.WriteLine();
+                Console.WriteLine("                                              Thanks For Purchasing ");
+            }
+            else if (deliverytotal == 3000)
+            {
+                Console.WriteLine("                                 As Your Bill Amount Is 3000 There is No Delivery Charges ");
+                Console.WriteLine();
+                Console.WriteLine("                                              Thanks For Purchasing ");
+            }
+            else if (deliverytotal >= 2000 && deliverytotal < 3000)
+            {
+                Console.WriteLine("                                    Delivery Charges are 250");
+                Console.WriteLine();
+                Console.WriteLine("                                              Thanks For Purchasing ");
+            }
+            else if (deliverytotal > 1 && deliverytotal < 2000)
+            {
+                Console.WriteLine("                                    Delivery Charges are 350");
+                Console.WriteLine();
+                Console.WriteLine("                                              Thanks For Purchasing ");
+            }
+            else if (deliverytotal < 1)
+            {
+                Console.WriteLine();
+                Console.WriteLine("NO DELIVERY CHARGES");
+                Console.WriteLine();
+                Console.WriteLine("Please Purchase Something First ");
+            }
+            Console.WriteLine("Press any Key to Conitnue ...");
+        }
+
     }
 }

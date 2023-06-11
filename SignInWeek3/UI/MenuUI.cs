@@ -24,7 +24,6 @@ namespace SignInWeek3.UI
             option = int.Parse(Console.ReadLine());
             return option;
         }
-
         public static int Menu1()
         {
             int option1;
@@ -41,7 +40,6 @@ namespace SignInWeek3.UI
             Console.ResetColor();
             return option1;
         }
-
         public static int AdminMenu()
         {
             int choice;
@@ -64,7 +62,6 @@ namespace SignInWeek3.UI
             choice = int.Parse(Console.ReadLine());
             return choice;
         }
-
         public static int UserMenu()
         {
             Console.Clear();
@@ -83,10 +80,10 @@ namespace SignInWeek3.UI
             opti = int.Parse(Console.ReadLine());
             Console.WriteLine("Please Press Any Key To Continue...");
             return opti;
-        }
-         
+        }         
         public static void Header()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("  _________                             ____   ");
             Console.WriteLine(" /   _____/   _____   _____      ______ |  |__");

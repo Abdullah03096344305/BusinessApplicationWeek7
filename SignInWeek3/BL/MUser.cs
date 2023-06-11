@@ -25,7 +25,7 @@ namespace SignInWeek3.BL
             this.password = password;
             this.role = role;
         }
-        public bool isAdmin()
+        public bool IsAdmin()
         {
             if (role == "Admin")
             {

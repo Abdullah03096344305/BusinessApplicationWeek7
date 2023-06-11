@@ -10,19 +10,52 @@ namespace SignInWeek3.BL
 {
     class UserData
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Message { get; set; }
-        public int Rating { get; set; }
+        private string name;
+        private string email;
+        private string message;
+        private int rating;      
 
-        public static List<UserData> userdata = new List<UserData>();
-
-        public UserData(string name, string email, string message, int rating)
+        public UserData(/*string name, string email, string message, int rating*/)
         {
-            Name = name;
-            Email = email;
-            Message = message;
-            Rating = rating;
+            /*this.name = name;
+            this.email = email;
+            this.message = message;
+            this.rating = rating;*/
+        }
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+        public string GetName()
+        {
+            return name;
+        }
+
+        public void SetEmail(string email)
+        {
+            this.email = email;
+        }
+        public string GetEmail()
+        {
+            return email;
+        }
+
+        public void SetMessage(string message)
+        {
+            this.message = message;
+        }
+        public string GetMessage()
+        {
+            return message;
+        }
+
+        public void SetRating(int rating)
+        {
+            this.rating = rating;
+        }
+        public int GetRating()
+        {
+            return rating;
         }
 
     }
