@@ -7,19 +7,10 @@ using System.Threading.Tasks;
 
 namespace SignInWeek3.BL
 {
-    class Burger
+    class Burger : Food
     {
-        public string name;
-        public int price;
-        public int burgertotal;
-        public Burger(int burgertotal)
+        public Burger(string name, int price) : base(name, price)
         {
-            this.burgertotal = burgertotal;
-        }
-        public Burger(string name, int price)
-        {
-            this.name = name;
-            this.price = price;
         }
 
     }

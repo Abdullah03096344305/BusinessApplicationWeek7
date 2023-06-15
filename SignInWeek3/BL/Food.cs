@@ -9,8 +9,8 @@ namespace SignInWeek3.BL
     class Food
     {
         protected string name;
-        protected int price;       
-       
+        private int price;
+
         public Food(string name, int price)
         {
             this.name = name;
@@ -32,6 +32,11 @@ namespace SignInWeek3.BL
         {
             return price;
         }
+        /*public int Price
+        {
+            get { return price; }
+            set { price = value; }
+        }*/
     }
 
 }

@@ -3,4 +3,4 @@ Kashmiri Burger,170
 Zinger Burger,220
 Special Tikka,210
 Double Sheikh,450
-Shaami Burger,150
+Shaami Burger,150Double Patty,400

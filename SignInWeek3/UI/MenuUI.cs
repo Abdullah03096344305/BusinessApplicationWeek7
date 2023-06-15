@@ -58,8 +58,11 @@ namespace SignInWeek3.UI
             Console.WriteLine();
             Console.WriteLine("6.  View   User Data ( Ratings )");
             Console.WriteLine();
+            Console.WriteLine("7.  Press 7 to Exit");
+            Console.WriteLine();
             Console.ResetColor();
             choice = int.Parse(Console.ReadLine());
+            Console.WriteLine("Press Any Key to Continue...");
             return choice;
         }
         public static int UserMenu()

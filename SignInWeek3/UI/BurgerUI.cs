@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using SignInWeek3.BL;
-/*using SignInWeek3.DL;*/
+using SignInWeek3.DL;
 using System.Threading.Tasks;
 
 namespace SignInWeek3.UI
@@ -79,14 +79,15 @@ namespace SignInWeek3.UI
             Console.WriteLine("Press any Key to Conitnue ...");
         }
 
-        public static void Bill(Burger info)
+        public static void Bill( int burgerTotal)
         {
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine();
-            int finalTotal = info.burgertotal;
+            Console.WriteLine();          
+            int finalTotal = burgerTotal;
+
             if (finalTotal < 1)
             {
                 Console.WriteLine("Please Purchase Something First!");
@@ -99,11 +100,29 @@ namespace SignInWeek3.UI
             }
             Console.WriteLine("Press any Key to Conitnue ...");
         }
-
-
-        public static void Delivery(Burger info)
+        public static void TotalSales( int burgerTotal)
         {
-            int deliverytotal = info.burgertotal;
+            Console.Clear();
+            MenuUI.Header();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            int finalTotal = burgerTotal;   
+            if (finalTotal < 1)
+            {
+                Console.WriteLine("There is No Sale Today!");
+            }
+            if (finalTotal > 1)
+            {
+                Console.WriteLine("Sales");
+                Console.WriteLine("Total sale is : " + finalTotal);
+            }
+            Console.WriteLine("Press any Key to Conitnue ...");
+        }
+        public static void Delivery(int burgerTotal)
+        {          
+            int deliverytotal = burgerTotal;
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine("              ***** DELIVERY CHARGES *****");

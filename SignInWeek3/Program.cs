@@ -14,32 +14,27 @@ namespace SignInWeek3
     {
         static void Main(string[] args)
         {
-            
-            string path = @"E:\Week3PDSubmit\SignInWeek3\textfile.txt";         
-            Burger info = new Burger(0);            
+            int burgerTotal = 0;
+            string path = @"E:\Week3PDSubmit\SignInWeek3\textfile.txt";          
             string path1 = @"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt";
             string pathUser = @"E:\Week3PDSubmit\SignInWeek3\UserFile.txt";
-
-            BurgerDL.ReadBurgerData(path1, BurgerDL.burgers);
+            BurgerDL.ReadBurgerData( BurgerDL.burgers);
             UserDataDL.ReadUserData(pathUser, UserDataDL.userdata);
-                     
-            
             int option;
             int option1;
             int option2;
             int choice;
-
             string adminname = "Abdul";
             string adminpass = "0";
             string adminUserCheck;
             string adminPassCheck;
-            bool check = MUserDL.ReadData(path, MUser.users);         
+            bool check = MUserDL.ReadData(path, MUser.users);
             do
             {
                 option1 = MenuUI.Menu1();
                 Console.Clear();
-                if( option1 == 1)
-                {  
+                if (option1 == 1)
+                {
                     Console.Clear();
                     MenuUI.Header();
                     Console.WriteLine("Enter Admin Username");
@@ -65,29 +60,30 @@ namespace SignInWeek3
                             }
                             else if (choice == 4)
                             {
-                                BurgerDL.DisplayBurgers(BurgerDL.burgers);
+                                BurgerDL.DisplayBurgers();
                             }
                             else if (choice == 5)
-                            {
-                                Console.Clear();
-                                MenuUI.Header();
-                                Console.WriteLine();
-                                Console.WriteLine("Sales");
-                                Console.WriteLine("Total sale is : " + info.burgertotal);
+                            {                               
+                                BurgerUI.TotalSales(burgerTotal);
                             }
                             else if (choice == 6)
                             {
                                 Console.WriteLine("Ratings");
                                 UserDataDL.DisplayUserData(UserDataDL.userdata);
                             }
+                            else if (choice == 7)
+                            {
+                                break;
+                            }
+
                             Console.ReadKey();
                         }
                         while (choice < 7);
 
                     }
-                        Console.ReadKey();
+                    Console.ReadKey();
                 }
-                else if ( option1 == 2)
+                else if (option1 == 2)
                 {
                     do
                     {
@@ -110,15 +106,14 @@ namespace SignInWeek3
                                         if (option2 == 1)
                                         {
                                             MenuUI.Header();
-                                            BurgerDL.DisplayBurgers(BurgerDL.burgers);
-                                            info.burgertotal = BurgerDL.CalculateBurgerPrice(BurgerDL.burgers, info);
-                                            Console.WriteLine("Burger Total Price: " + info.burgertotal);
-                                            Console.WriteLine("Press Any Key to Continue! ");
-                                            Console.ReadKey();
-                                        }                                          
+                                            BurgerDL.DisplayBurgers();                                         
+                                            burgerTotal = BurgerDL.CalculateBurgerPrice(BurgerDL.burgers,burgerTotal);                                         
+                                            Console.WriteLine("Burger Total Price: " + burgerTotal);
+                                            Console.WriteLine("Press Any Key to Continue! ");                                        
+                                        }
                                         else if (option2 == 2)
                                         {
-                                            BurgerUI.Bill(info);
+                                            BurgerUI.Bill(burgerTotal);
                                         }
                                         else if (option2 == 3)
                                         {
@@ -138,7 +133,7 @@ namespace SignInWeek3
                                         }
                                         else if (option2 == 7)
                                         {
-                                            BurgerUI.Delivery(info);
+                                            BurgerUI.Delivery(burgerTotal);
                                         }
                                         Console.ReadKey();
                                     }
@@ -158,23 +153,23 @@ namespace SignInWeek3
 
                             }
                         }
-                        else if(option == 3)
+                        else if (option == 3)
                         {
                             break;
-                        }                        
-                       /* Console.ReadKey();*/
+                        }
+                        /* Console.ReadKey();*/
                     }
                     while (option < 4);
                 }
-               
+
             }
             while (option1 < 3);
-        
+
         }
-       
-       
-       
-        
+
+
+
+
 
     }
 }
