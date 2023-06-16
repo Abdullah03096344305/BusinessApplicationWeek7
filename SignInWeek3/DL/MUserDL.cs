@@ -11,7 +11,7 @@ namespace SignInWeek3.DL
 {
     class MUserDL
     {
-
+        public static List<MUser> users = new List<MUser>();
         public static string ParseData(string record, int field)
         {
             int comma = 1;
@@ -92,7 +92,7 @@ namespace SignInWeek3.DL
         public static void StoreDataInFile(string path, MUser user)
         {
             StreamWriter file = new StreamWriter(path, true);
-            file.WriteLine(user.name + "," + user.password + "," + user.role);
+            file.WriteLine(user.GetName() + "," + user.GetPassword() + "," + user.GetRole());
             file.Flush();
             file.Close();
         }
@@ -100,7 +100,7 @@ namespace SignInWeek3.DL
         {
             foreach (MUser storedUser in users)
             {
-                if (user.name == storedUser.name && user.password == storedUser.password)
+                if (user.GetName() == storedUser.GetName() && user.GetPassword() == storedUser.GetPassword())
                 {
                     return storedUser;
                 }

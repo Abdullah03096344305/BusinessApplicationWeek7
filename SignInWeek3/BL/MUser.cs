@@ -10,10 +10,9 @@ namespace SignInWeek3.BL
 {
     class MUser
     {
-        public string name;
-        public string password;
-        public string role;
-        public static List<MUser> users = new List<MUser>();
+        private string name;
+        private string password;
+        private string role;        
         public MUser(string name, string password)
         {
             this.name = name;
@@ -25,6 +24,31 @@ namespace SignInWeek3.BL
             this.password = password;
             this.role = role;
         }
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+        public string GetName()
+        {
+            return name;
+        }
+        public void SetPassword(string password)
+        {
+            this.password = password;
+        }
+        public string GetPassword()
+        {
+            return password;
+        }
+        public void SetRole(string role)
+        {
+            this.role = role;
+        }
+        public string GetRole()
+        {
+            return role;
+        }
+
         public bool IsAdmin()
         {
             if (role == "Admin")

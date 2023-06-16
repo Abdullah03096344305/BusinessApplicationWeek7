@@ -53,10 +53,11 @@ namespace SignInWeek3.DL
         public static void UpdateProduct(List<Burger> burgers)
         {
             Console.Clear();
-            for (int i = 0; i < burgers.Count; i++)
+           /* for (int i = 0; i < burgers.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {burgers[i].GetName()}: ${burgers[i].GetPrice()}");
-            }
+            }*/
+            BurgerUI.DisplayBurgers();
             Console.WriteLine("Enter the index of the product to update (1 to " + burgers.Count + "):");
             int index = Convert.ToInt32(Console.ReadLine()) - 1;
             if (index >= 0 && index < burgers.Count)
@@ -124,13 +125,7 @@ namespace SignInWeek3.DL
             }
             return burgerTotal;
         }
-        public static void DisplayBurgers()
-        {
-            for (int i = 0 + 0; i < burgers.Count; i++)
-            {
-                Console.WriteLine("" + (i + 1) + ":    " + burgers[i].GetName() + "            " + burgers[i].GetPrice());
-            }
-        }
+        
         public static void AddProduct(List<Burger> burgers)
         {
             Console.Clear();
@@ -151,7 +146,7 @@ namespace SignInWeek3.DL
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine("Current list of burgers:");
-            DisplayBurgers();
+            BurgerUI.DisplayBurgers();
             Console.Write("Enter the index of the burger to delete: ");
             int indexToDelete;
             if (int.TryParse(Console.ReadLine(), out indexToDelete))
@@ -172,7 +167,7 @@ namespace SignInWeek3.DL
             }
             WriteBurgersToFile(burgers, path1);
             Console.WriteLine("Updated list of burgers:");
-            DisplayBurgers();
+            BurgerUI.DisplayBurgers();
         }
 
 

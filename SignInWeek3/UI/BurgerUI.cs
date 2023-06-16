@@ -78,7 +78,6 @@ namespace SignInWeek3.UI
             Console.WriteLine();
             Console.WriteLine("Press any Key to Conitnue ...");
         }
-
         public static void Bill( int burgerTotal)
         {
             Console.Clear();
@@ -158,6 +157,13 @@ namespace SignInWeek3.UI
                 Console.WriteLine("Please Purchase Something First ");
             }
             Console.WriteLine("Press any Key to Conitnue ...");
+        }
+        public static void DisplayBurgers()
+        {
+            for (int i = 0 + 0; i < BurgerDL.burgers.Count; i++)
+            {
+                Console.WriteLine("" + (i + 1) + ":    " + BurgerDL.burgers[i].GetName() + "            " + BurgerDL.burgers[i].GetPrice());
+            }
         }
 
     }

@@ -28,7 +28,7 @@ namespace SignInWeek3
             string adminpass = "0";
             string adminUserCheck;
             string adminPassCheck;
-            bool check = MUserDL.ReadData(path, MUser.users);
+            bool check = MUserDL.ReadData(path, MUserDL.users);
             do
             {
                 option1 = MenuUI.Menu1();
@@ -60,7 +60,7 @@ namespace SignInWeek3
                             }
                             else if (choice == 4)
                             {
-                                BurgerDL.DisplayBurgers();
+                                BurgerUI.DisplayBurgers();
                             }
                             else if (choice == 5)
                             {                               
@@ -94,7 +94,7 @@ namespace SignInWeek3
                             MUser user = MUserDL.TakeInputWithoutRole();
                             if (user != null)
                             {
-                                user = MUserDL.SignIn(user, MUser.users);
+                                user = MUserDL.SignIn(user, MUserDL.users);
                                 if (user == null)
                                     Console.WriteLine("Invalid User");
                                 else if (user.IsAdmin())
@@ -106,9 +106,9 @@ namespace SignInWeek3
                                         if (option2 == 1)
                                         {
                                             MenuUI.Header();
-                                            BurgerDL.DisplayBurgers();                                         
+                                            BurgerUI.DisplayBurgers();                                         
                                             burgerTotal = BurgerDL.CalculateBurgerPrice(BurgerDL.burgers,burgerTotal);                                         
-                                            Console.WriteLine("Burger Total Price: " + burgerTotal);
+                                           /* Console.WriteLine("Burger Total Price: " + burgerTotal);*/
                                             Console.WriteLine("Press Any Key to Continue! ");                                        
                                         }
                                         else if (option2 == 2)
@@ -134,7 +134,7 @@ namespace SignInWeek3
                                         else if (option2 == 7)
                                         {
                                             BurgerUI.Delivery(burgerTotal);
-                                        }
+                                        }                                        
                                         Console.ReadKey();
                                     }
                                     while (option2 < 8);
@@ -149,7 +149,7 @@ namespace SignInWeek3
                             if (user != null)
                             {
                                 MUserDL.StoreDataInFile(path, user);
-                                MUserDL.StoreDataInList(MUser.users, user);
+                                MUserDL.StoreDataInList(MUserDL.users, user);
 
                             }
                         }

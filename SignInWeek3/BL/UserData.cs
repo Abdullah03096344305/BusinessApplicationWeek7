@@ -15,12 +15,8 @@ namespace SignInWeek3.BL
         private string message;
         private int rating;      
 
-        public UserData(/*string name, string email, string message, int rating*/)
-        {
-            /*this.name = name;
-            this.email = email;
-            this.message = message;
-            this.rating = rating;*/
+        public UserData()
+        {          
         }
         public void SetName(string name)
         {
