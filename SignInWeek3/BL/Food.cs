@@ -32,11 +32,7 @@ namespace SignInWeek3.BL
         {
             return price;
         }
-        /*public int Price
-        {
-            get { return price; }
-            set { price = value; }
-        }*/
+       
     }
 
 }

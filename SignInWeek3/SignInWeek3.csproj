@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EZInput, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EZInput.1.3.2\lib\netstandard2.0\EZInput.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,19 +47,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Burger.cs" />
+    <Compile Include="BL\Deals.cs" />
     <Compile Include="BL\Food.cs" />
     <Compile Include="BL\MUser.cs" />
     <Compile Include="BL\UserData.cs" />
     <Compile Include="DL\BurgerDL.cs" />
+    <Compile Include="DL\DealsDL.cs" />
     <Compile Include="DL\MUserDL.cs" />
     <Compile Include="DL\UserDataDL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\BurgerUI.cs" />
+    <Compile Include="UI\DealsUI.cs" />
     <Compile Include="UI\MenuUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

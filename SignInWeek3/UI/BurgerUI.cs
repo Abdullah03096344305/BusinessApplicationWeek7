@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using SignInWeek3.BL;
 using SignInWeek3.DL;
+using EZInput;
 using System.Threading.Tasks;
 
 namespace SignInWeek3.UI
@@ -78,14 +79,14 @@ namespace SignInWeek3.UI
             Console.WriteLine();
             Console.WriteLine("Press any Key to Conitnue ...");
         }
-        public static void Bill( int burgerTotal)
+        public static void Bill( int burgerTotal,int dealTotal)
         {
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();          
-            int finalTotal = burgerTotal;
+            int finalTotal = burgerTotal + dealTotal;
 
             if (finalTotal < 1)
             {
@@ -99,7 +100,7 @@ namespace SignInWeek3.UI
             }
             Console.WriteLine("Press any Key to Conitnue ...");
         }
-        public static void TotalSales( int burgerTotal)
+        public static void TotalSales( int burgerTotal, int dealTotal)
         {
             Console.Clear();
             MenuUI.Header();
@@ -107,7 +108,7 @@ namespace SignInWeek3.UI
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            int finalTotal = burgerTotal;   
+            int finalTotal = burgerTotal + dealTotal;   
             if (finalTotal < 1)
             {
                 Console.WriteLine("There is No Sale Today!");
@@ -119,9 +120,9 @@ namespace SignInWeek3.UI
             }
             Console.WriteLine("Press any Key to Conitnue ...");
         }
-        public static void Delivery(int burgerTotal)
+        public static void Delivery(int burgerTotal, int dealTotal)
         {          
-            int deliverytotal = burgerTotal;
+            int deliverytotal = burgerTotal + dealTotal;
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine("              ***** DELIVERY CHARGES *****");
@@ -143,9 +144,15 @@ namespace SignInWeek3.UI
                 Console.WriteLine();
                 Console.WriteLine("                                              Thanks For Purchasing ");
             }
-            else if (deliverytotal > 1 && deliverytotal < 2000)
+            else if (deliverytotal > 1000 && deliverytotal < 2000)
             {
                 Console.WriteLine("                                    Delivery Charges are 350");
+                Console.WriteLine();
+                Console.WriteLine("                                              Thanks For Purchasing ");
+            }
+            else if (deliverytotal > 1 && deliverytotal <= 1000)
+            {
+                Console.WriteLine("                                    Delivery Charges are 150");
                 Console.WriteLine();
                 Console.WriteLine("                                              Thanks For Purchasing ");
             }
@@ -160,10 +167,20 @@ namespace SignInWeek3.UI
         }
         public static void DisplayBurgers()
         {
+            Console.Clear();
+            MenuUI.Header();
             for (int i = 0 + 0; i < BurgerDL.burgers.Count; i++)
             {
-                Console.WriteLine("" + (i + 1) + ":    " + BurgerDL.burgers[i].GetName() + "            " + BurgerDL.burgers[i].GetPrice());
+                Console.WriteLine();
+                Console.SetCursorPosition(2, 20 + i);                   
+                Console.WriteLine(i+1 + ":   ");
+                Console.SetCursorPosition(20, 20 + i);
+                Console.WriteLine(BurgerDL.burgers[i].GetName());
+                Console.SetCursorPosition(60, 20 + i);
+                Console.WriteLine(BurgerDL.burgers[i].GetPrice());              
             }
+           
+            
         }
 
     }

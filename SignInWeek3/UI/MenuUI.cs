@@ -61,9 +61,14 @@ namespace SignInWeek3.UI
             Console.WriteLine("7.  Press 7 to Exit");
             Console.WriteLine();
             Console.ResetColor();
-            choice = int.Parse(Console.ReadLine());
-            Console.WriteLine("Press Any Key to Continue...");
-            return choice;
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                return choice;
+            }
+            else
+            {
+                return -1;
+            }
         }
         public static int UserMenu()
         {
@@ -72,18 +77,38 @@ namespace SignInWeek3.UI
             int opti;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1.     Burgers");
-            Console.WriteLine("2.     Bill");
-            Console.WriteLine("3.     Smash Feed");
-            Console.WriteLine("4.     Our Story");
-            Console.WriteLine("5.     Contact Us ( Rate Us) ");
-            Console.WriteLine("6.     Locations");
-            Console.WriteLine("7.     Delivery Charges");
+            Console.WriteLine("2.     Exclusive Deals");
+            Console.WriteLine("3.     Bill");
+            Console.WriteLine("4.     Smash Feed");
+            Console.WriteLine("5.     Our Story");
+            Console.WriteLine("6.     Contact Us ( Rate Us) ");
+            Console.WriteLine("7.     Locations");
+            Console.WriteLine("8.     Delivery Charges");
             Console.WriteLine();
             Console.WriteLine("PRESS 8 TO EXIT");
             opti = int.Parse(Console.ReadLine());
             Console.WriteLine("Please Press Any Key To Continue...");
             return opti;
-        }         
+        }      
+        public static int SubAdminMenu()
+        {
+            Console.Clear();
+            MenuUI.Header();
+            int subChoice;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1.     Burger");
+            Console.WriteLine("2.     Deal");
+            if (int.TryParse(Console.ReadLine(), out subChoice))
+            {
+                return subChoice;
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
+        
         public static void Header()
         {
             Console.Clear();

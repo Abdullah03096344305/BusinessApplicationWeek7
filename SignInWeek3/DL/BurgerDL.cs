@@ -52,11 +52,7 @@ namespace SignInWeek3.DL
 
         public static void UpdateProduct(List<Burger> burgers)
         {
-            Console.Clear();
-           /* for (int i = 0; i < burgers.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {burgers[i].GetName()}: ${burgers[i].GetPrice()}");
-            }*/
+            Console.Clear();          
             BurgerUI.DisplayBurgers();
             Console.WriteLine("Enter the index of the product to update (1 to " + burgers.Count + "):");
             int index = Convert.ToInt32(Console.ReadLine()) - 1;
@@ -153,7 +149,7 @@ namespace SignInWeek3.DL
             {
                 if (indexToDelete >= 0 && indexToDelete < burgers.Count)
                 {
-                    burgers.RemoveAt(indexToDelete);
+                    burgers.RemoveAt(indexToDelete - 1);
                     Console.WriteLine("Burger deleted successfully.");
                 }
                 else

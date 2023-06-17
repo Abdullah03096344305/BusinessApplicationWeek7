@@ -1,0 +1,9 @@
+Zinger Burger (2),360
+Shaami Burger (3),480
+Chicken Burger + Reg. Fries,300
+Chicken Burger(5) + Family Fries + Chicken Piece(5),1300
+Zinger Burger(2) + Chicken Burger(2),600
+Pizza(2) + Reg. Fries,1500
+Pizza + Chicken Burger + Reg. Fries,1100
+3 WEDDED SHEIKH + LOADED FRIES + COLD-DRINK,1200
+2 Beef Hunter + Fries + Coke,750
