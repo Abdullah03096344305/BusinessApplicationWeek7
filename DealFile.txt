@@ -2,5 +2,7 @@ Zinger Burger (2),360
 Shaami Burger (3),480
 Chicken Burger(5) + Family Fries + Chicken Piece(5),1300
 Zinger Burger(2) + Chicken Burger(2),600
-Pizza(2) + Reg. Fries,1500
+Pizza(2) + Reg. Fries,1600
 2 Beef Hunter + Fries + Coke,750
+Zinger12,200
+Zinger Burger,200

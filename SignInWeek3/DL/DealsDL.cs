@@ -12,7 +12,7 @@ namespace SignInWeek3.DL
     class DealsDL
     {
         public static List<Deals> deals = new List<Deals>();
-        public static void ReadDealData(List<Deals> deals)
+        public static void ReadDealData()
         {
             string path = @"E:\Week3PDSubmit\SignInWeek3\DealFile.txt";
             if (File.Exists(path))
@@ -50,7 +50,7 @@ namespace SignInWeek3.DL
             }
         }
 
-        public static void UpdateDeal(List<Deals> deals)
+        public static void UpdateDeal()
         {
             Console.Clear();            
             DealsUI.DisplayDeals();
@@ -62,7 +62,7 @@ namespace SignInWeek3.DL
                 int updatedPrice = Convert.ToInt32(Console.ReadLine());
                 deals[index].SetPrice(updatedPrice);
                 Console.WriteLine("Price updated successfully.");
-                UpdateDealFile(deals);
+                UpdateDealFile();
             }
             else
             {
@@ -70,7 +70,7 @@ namespace SignInWeek3.DL
             }
         }
 
-        public static void UpdateDealFile(List<Deals> deals)
+        public static void UpdateDealFile()
         {
             string path = @"E:\Week3PDSubmit\SignInWeek3\DealFile.txt";
             List<string> lines = new List<string>();
@@ -82,7 +82,7 @@ namespace SignInWeek3.DL
             Console.WriteLine("Text file updated successfully.");
         }
 
-        public static void WriteDealToFile(List<Deals> deals, string dealpath)
+        public static void WriteDealToFile( string dealpath)
         {
             using (StreamWriter writer = new StreamWriter(dealpath))
             {
@@ -94,7 +94,7 @@ namespace SignInWeek3.DL
         }
 
 
-        public static int CalculateDealPrice(List<Deals> deals, int dealTotal)
+        public static int CalculateDealPrice( int dealTotal)
         {
             int dealchoice;
             int dealquantity;
@@ -122,23 +122,46 @@ namespace SignInWeek3.DL
             return dealTotal;
         }
 
-        public static void AddDealProduct(List<Deals> deals)
+        public static void AddDealProduct()
         {
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine("Enter Deal Name: ");
             string name = Console.ReadLine();
+
             Console.WriteLine("Enter Deal Price: ");
-            int price = int.Parse(Console.ReadLine());
-            Deals deal = new Deals(name, price);
-            deals.Add(deal);
-            using (StreamWriter file = new StreamWriter(@"E:\Week3PDSubmit\SignInWeek3\DealFile.txt", true))
+            int price = 0;
+            bool isValidPrice = false;
+            while (!isValidPrice)
             {
-                file.WriteLine($"{name},{price}");
+                string priceInput = Console.ReadLine();
+                isValidPrice = int.TryParse(priceInput, out price) && price >= 0;
+                if (!isValidPrice)
+                {
+                    Console.WriteLine("Invalid price. Please enter a valid non-negative integer value.");
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(name) && name.All(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c)))
+            {
+                Deals deal = new Deals(name, price);
+                deals.Add(deal);
+
+                using (StreamWriter file = new StreamWriter(@"E:\Week3PDSubmit\SignInWeek3\DealFile.txt", true))
+                {
+                    file.WriteLine($"{name},{price}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid name. Please enter a valid name consisting of letters, digits, or spaces only.");
             }
         }
-        public static void DeleteDealProduct(List<Deals> deals, string dealpath)
+
+
+        public static void DeleteDealProduct( )
         {
+            string dealpath = @"E:\Week3PDSubmit\SignInWeek3\DealFile.txt";
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine("Current list of Deals:");
@@ -161,7 +184,7 @@ namespace SignInWeek3.DL
             {
                 Console.WriteLine("Invalid input. No Deal deleted.");
             }
-            WriteDealToFile(deals, dealpath);
+            WriteDealToFile(dealpath);
             Console.WriteLine("Updated list of Deals:");
             DealsUI.DisplayDeals();
             

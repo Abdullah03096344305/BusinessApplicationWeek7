@@ -12,7 +12,7 @@ namespace SignInWeek3.DL
     class BurgerDL
     {
         public static List<Burger> burgers = new List<Burger>();
-        public static void ReadBurgerData( List<Burger> burgers)
+        public static void ReadBurgerData()
         {
             string path = @"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt";
             if (File.Exists(path))
@@ -50,7 +50,7 @@ namespace SignInWeek3.DL
             }
         }
 
-        public static void UpdateProduct(List<Burger> burgers)
+        public static void UpdateProduct()
         {
             Console.Clear();          
             BurgerUI.DisplayBurgers();
@@ -62,7 +62,7 @@ namespace SignInWeek3.DL
                 int updatedPrice = Convert.ToInt32(Console.ReadLine());
                 burgers[index].SetPrice(updatedPrice) ;
                 Console.WriteLine("Price updated successfully.");
-                UpdateTextFile(burgers);
+                UpdateTextFile();
             }
             else
             {
@@ -70,7 +70,7 @@ namespace SignInWeek3.DL
             }
         }
 
-        public static void UpdateTextFile(List<Burger> burgers)
+        public static void UpdateTextFile()
         {
             string path = @"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt";
             List<string> lines = new List<string>();
@@ -82,8 +82,9 @@ namespace SignInWeek3.DL
             Console.WriteLine("Text file updated successfully.");
         }
 
-        public static void WriteBurgersToFile(List<Burger> burgers, string path)
+        public static void WriteBurgersToFile()
         {
+            string path = @"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt";
             using (StreamWriter writer = new StreamWriter(path))
             {
                 foreach (Burger burger in burgers)
@@ -94,7 +95,7 @@ namespace SignInWeek3.DL
         }
 
 
-        public static int CalculateBurgerPrice(List<Burger> burgers,int burgerTotal)
+        public static int CalculateBurgerPrice(int burgerTotal)
         {
             int burgerchoice;
             int burgerquantity;
@@ -121,23 +122,43 @@ namespace SignInWeek3.DL
             }
             return burgerTotal;
         }
-        
-        public static void AddProduct(List<Burger> burgers)
+
+        public static void AddProduct()
         {
             Console.Clear();
             MenuUI.Header();
             Console.WriteLine("Enter Burger Name: ");
             string name = Console.ReadLine();
+
             Console.WriteLine("Enter Burger Price: ");
-            int price = int.Parse(Console.ReadLine());
-            Burger burger = new Burger(name, price);
-            burgers.Add(burger);
-            using (StreamWriter file = new StreamWriter(@"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt", true))
+            int price = 0;
+            bool isValidPrice = false;
+            while (!isValidPrice)
             {
-                file.WriteLine($"{name},{price}");
+                string priceInput = Console.ReadLine();
+                isValidPrice = int.TryParse(priceInput, out price) && price >= 0;
+                if (!isValidPrice)
+                {
+                    Console.WriteLine("Invalid price. Please enter a valid non-negative integer value.");
+                }
+            }
+            if (!string.IsNullOrWhiteSpace(name) && name.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            {
+                Burger burger = new Burger(name, price);
+                burgers.Add(burger);
+
+                using (StreamWriter file = new StreamWriter(@"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt", true))
+                {
+                    file.WriteLine($"{name},{price}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid name. Please enter a valid name consisting of letters, digits, or spaces only.");
             }
         }
-        public static void DeleteProduct(List<Burger> burgers, string path1)
+
+        public static void DeleteProduct( )
         {
             Console.Clear();
             MenuUI.Header();
@@ -161,7 +182,7 @@ namespace SignInWeek3.DL
             {
                 Console.WriteLine("Invalid input. No burger deleted.");
             }
-            WriteBurgersToFile(burgers, path1);
+            WriteBurgersToFile();
             Console.WriteLine("Updated list of burgers:");
             BurgerUI.DisplayBurgers();
         }

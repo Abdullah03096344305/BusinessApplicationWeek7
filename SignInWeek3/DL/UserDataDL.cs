@@ -12,8 +12,9 @@ namespace SignInWeek3.DL
     class UserDataDL
     {
         public static List<UserData> userdata = new List<UserData>();
-        public static void ReadUserData(string pathUser, List<UserData> userdata)
+        public static void ReadUserData()
         {
+            string pathUser = @"E:\Week3PDSubmit\SignInWeek3\UserFile.txt";
             if (File.Exists(pathUser))
             {
                 using (StreamReader file = new StreamReader(pathUser))

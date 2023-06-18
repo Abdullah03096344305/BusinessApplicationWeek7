@@ -8,7 +8,6 @@ namespace SignInWeek3.UI
 {
     class MenuUI
     {
-
         public static int Menu()
         {
             int option;
@@ -20,9 +19,15 @@ namespace SignInWeek3.UI
             Console.WriteLine();
             Console.WriteLine("3. Exit");
             Console.WriteLine();
-            Console.WriteLine("Enter Option");
-            option = int.Parse(Console.ReadLine());
-            return option;
+            Console.WriteLine("Enter Option");            
+            if (int.TryParse(Console.ReadLine(), out option))
+            {
+                return option;
+            }
+            else
+            {
+                return -1;
+            }           
         }
         public static int Menu1()
         {
@@ -35,10 +40,16 @@ namespace SignInWeek3.UI
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("1.  Admin");
             Console.WriteLine();
-            Console.WriteLine("2.  Customer");
-            option1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("2.  Customer");          
             Console.ResetColor();
-            return option1;
+            if (int.TryParse(Console.ReadLine(), out option1))
+            {
+                return option1;
+            }
+            else
+            {
+                return -1;
+            }          
         }
         public static int AdminMenu()
         {
@@ -85,10 +96,15 @@ namespace SignInWeek3.UI
             Console.WriteLine("7.     Locations");
             Console.WriteLine("8.     Delivery Charges");
             Console.WriteLine();
-            Console.WriteLine("PRESS 8 TO EXIT");
-            opti = int.Parse(Console.ReadLine());
-            Console.WriteLine("Please Press Any Key To Continue...");
-            return opti;
+            Console.WriteLine("PRESS 8 TO EXIT");            
+            if (int.TryParse(Console.ReadLine(), out opti))
+            {
+                return opti;
+            }
+            else
+            {
+                return -1;
+            }     
         }      
         public static int SubAdminMenu()
         {

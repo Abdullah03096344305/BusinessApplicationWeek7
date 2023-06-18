@@ -14,15 +14,12 @@ namespace SignInWeek3
     {
         static void Main(string[] args)
         {
-            int burgerTotal = 0;
-            int dealTotal = 0;
-            string path = @"E:\Week3PDSubmit\SignInWeek3\textfile.txt";
-            string dealpath = @"E:\Week3PDSubmit\SignInWeek3\DealFile.txt";
-            string path1 = @"E:\Week3PDSubmit\SignInWeek3\BurgerFile.txt";
-            string pathUser = @"E:\Week3PDSubmit\SignInWeek3\UserFile.txt";
-            BurgerDL.ReadBurgerData( BurgerDL.burgers);
-            DealsDL.ReadDealData( DealsDL.deals);
-            UserDataDL.ReadUserData(pathUser, UserDataDL.userdata);
+            int burgerTotal = 0,dealTotal = 0;
+           
+            string path = @"E:\Week3PDSubmit\SignInWeek3\textfile.txt";          
+            BurgerDL.ReadBurgerData( );
+            DealsDL.ReadDealData( );
+            UserDataDL.ReadUserData();
             int option;
             int option1;
             int option2;
@@ -58,11 +55,11 @@ namespace SignInWeek3
                                subChoice = MenuUI.SubAdminMenu();
                                if(subChoice == 1)
                                {
-                                    BurgerDL.AddProduct(BurgerDL.burgers);
+                                    BurgerDL.AddProduct();
                                }
                                else if(subChoice == 2)
                                {
-                                    DealsDL.AddDealProduct(DealsDL.deals);
+                                    DealsDL.AddDealProduct();
                                }                                
                             }
                             else if (choice == 2)
@@ -70,11 +67,11 @@ namespace SignInWeek3
                                     subChoice = MenuUI.SubAdminMenu();
                                     if (subChoice == 1)
                                     {
-                                        BurgerDL.DeleteProduct(BurgerDL.burgers, path1);
+                                        BurgerDL.DeleteProduct();
                                     }
                                     else if (subChoice == 2)
                                     {
-                                        DealsDL.DeleteDealProduct(DealsDL.deals, dealpath);
+                                        DealsDL.DeleteDealProduct();
                                     }                                   
                             }
                             else if (choice == 3)
@@ -82,11 +79,11 @@ namespace SignInWeek3
                                     subChoice = MenuUI.SubAdminMenu();
                                     if (subChoice == 1)
                                     {
-                                        BurgerDL.UpdateProduct(BurgerDL.burgers);
+                                        BurgerDL.UpdateProduct();
                                     }
                                     else if (subChoice == 2)
                                     {
-                                        DealsDL.UpdateDeal(DealsDL.deals);
+                                        DealsDL.UpdateDeal();
                                     }                                   
                             }
                             else if (choice == 4)
@@ -118,7 +115,7 @@ namespace SignInWeek3
                                 Console.ReadKey();
                             }
                         }
-                        while (choice < 7);
+                        while (choice < 7 && choice > 0);
 
                     }
                     Console.ReadKey();
@@ -147,7 +144,7 @@ namespace SignInWeek3
                                         {
                                             MenuUI.Header();
                                             BurgerUI.DisplayBurgers();                                         
-                                            burgerTotal = BurgerDL.CalculateBurgerPrice(BurgerDL.burgers,burgerTotal);
+                                            burgerTotal = BurgerDL.CalculateBurgerPrice(burgerTotal);
                                             Console.WriteLine("Burger Total Price: " + burgerTotal);
                                             Console.WriteLine("Press Any Key to Continue! ");                                        
                                         }
@@ -155,7 +152,7 @@ namespace SignInWeek3
                                         {
                                             MenuUI.Header();
                                             DealsUI.DisplayDeals();
-                                            dealTotal = DealsDL.CalculateDealPrice(DealsDL.deals, dealTotal);
+                                            dealTotal = DealsDL.CalculateDealPrice( dealTotal);
                                             Console.WriteLine("Deals Total Price: " + dealTotal);
                                             Console.WriteLine("Press Any Key to Continue! ");
                                         }
@@ -182,7 +179,11 @@ namespace SignInWeek3
                                         else if (option2 == 8)
                                         {
                                             BurgerUI.Delivery(burgerTotal,dealTotal);
-                                        }                                        
+                                        }          
+                                        else if(option2 == -1)
+                                        {
+                                            Genral.InvalidInputError();
+                                        }
                                         Console.ReadKey();
                                     }
                                     while (option2 < 9 && option2 > 0 );
@@ -198,20 +199,29 @@ namespace SignInWeek3
                             {
                                 MUserDL.StoreDataInFile(path, user);
                                 MUserDL.StoreDataInList(MUserDL.users, user);
-
                             }
                         }
                         else if (option == 3)
                         {
                             break;
                         }
-                        /* Console.ReadKey();*/
+                        else if(option == -1)
+                        {
+                            Genral.InvalidInputError();
+                        }                       
                     }
-                    while (option < 4);
+                    while (option < 4 && option > 0);
                 }
-
+                else if(option1 == -1)
+                {
+                    Genral.InvalidInputError();
+                }
+                else if(option1 > 0)
+                {
+                    Genral.InvalidInputError();                
+                }
             }
-            while (option1 < 3);
+            while (option1 < 3 );
 
         }
 
